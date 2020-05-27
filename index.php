@@ -84,7 +84,7 @@
           <div class="form-group">
             <h2>Signature Generator</h2>
             <p>Enter your information below to generate your signature.</p>
-            <p>To add telephone numbers, click the <strong class="text-info">"Add Phone"</strong> button. You may use the sorting arrow buttons on the left side of each telephone number input to reorder telephone numbers. You may use the removal X button on the right side of each telephone input to remove it.</p>
+            <p>To add telephone numbers, click the <strong class="text-info">"Add Phone"</strong> button. You may use the sort up "<i class="fa fa-arrow-up text-success" aria-hidden="true"></i>" and sort down "<i class="fa fa-arrow-down text-danger" aria-hidden="true"></i>" buttons on the left side of each telephone number input to reorder telephone numbers. You may use the removal "<i class="fa fa-times text-danger" aria-hidden="true"></i>" button on the right side of each telephone input to remove it.</p>
           </div>
           <hr>
           <div class="form-row">
