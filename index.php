@@ -202,7 +202,7 @@
   <div style="line-height: 1.5; font-size: 12px; color: #000000; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 18px;">
   <?php
     if (!empty($tels) && is_array($tels)) {
-      echo '<table bgcolor="transparent" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 16px auto 0 0; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: transparent; width: 320px;" valign="top" width="320"> <tbody>';
+      echo '<table bgcolor="transparent" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto 0 0; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: transparent; width: 320px;" valign="top" width="320"> <tbody>';
       for ($i = 0; $i < count($tels); $i++) {
         $tel = $tels[$i];
         if ('#' === $tel['href']) {
