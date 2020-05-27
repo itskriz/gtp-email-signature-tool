@@ -35,16 +35,16 @@
 
 
       if (isset($_GET) && !empty($_GET)) {
-        $name = ucwords($_GET['name']);
-        $title = ucwords($_GET['title']);
+        $name = ucwords(filter_var($_GET['name'], FILTER_SANITIZE_STRING));
+        $title = ucwords(filter_var($_GET['title'], FILTER_SANITIZE_STRING));
 
         $tels = array();
 
         $maxTel = 0;
         for ($i = 0; $i < 10; $i++) {
           if (isset($_GET['tel_'.$i.'_value']) && $_GET['tel_'.$i.'_region']) {
-            $thisTelValue = $_GET['tel_'.$i.'_value'];
-            $thisTelRegion = $_GET['tel_'.$i.'_region'];
+            $thisTelValue = filter_var($_GET['tel_'.$i.'_value'], FILTER_SANITIZE_STRING);
+            $thisTelRegion = filter_var($_GET['tel_'.$i.'_region'], FILTER_SANITIZE_STRING);
             if (strlen($thisTelValue) > $maxTel) {
               $maxTel = strlen($thisTelValue);
             }
@@ -174,7 +174,7 @@
         </p>
         <p>
           <strong>Generator Link</strong><br>
-          If you are generating this signature for someone else, you may use the below link to send a premade signature to someone. Simply click the button below to copy it to your clipboard and send that to the person of your choice.
+          If you are generating this signature for someone else, you may use the below link to send a premade signature to someone. Click the copy button "<i class="fa fa-clipboard text-info" aria-hidden="true" title="Copy to clipboard"></i>" below to copy it to your clipboard and send that to the person of your choice.
         </p>
         <!-- Target -->
         <div class="form-inline">
