@@ -28,18 +28,13 @@
   </head>
   <body>
     <?php
-
       $get_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $get_cwd = explode('?', $get_url);
       $logoURL = $get_cwd[0] . 'gtp_email-logo.gif';
-
-
       if (isset($_GET) && !empty($_GET)) {
         $name = ucwords(filter_var($_GET['name'], FILTER_SANITIZE_STRING));
         $title = ucwords(filter_var($_GET['title'], FILTER_SANITIZE_STRING));
-
         $tels = array();
-
         $maxTel = 0;
         for ($i = 0; $i < 10; $i++) {
           if (isset($_GET['tel_'.$i.'_value']) && $_GET['tel_'.$i.'_region']) {
@@ -55,19 +50,11 @@
             );
             if (preg_match('/[a-z]/i', $thisTelValue)) {
               $thisTel['href'] = '#';
-              $thisTel['label'] = strtolower($thisTelValue);
+              $thisTel['label'] = $thisTelValue;
+              $thisTel['refion'] = $thisTelRegion;
             }
             array_push($tels, $thisTel);
           }
-        }
-        for ($i = 0; $i < count($tels); $i++) {
-          $telDiff = $maxTel - strlen($tels[$i]['label']) + 2;
-          $telAdd = '&nbsp ';
-          for ($j = 0; $j < $telDiff; $j++) {
-            $telAdd .= '&nbsp ';
-          }
-          $telRegion = $tels[$i]['region'];
-          $tels[$i]['region'] = $telAdd .  $telRegion;
         }
       }
     ?>
@@ -77,14 +64,12 @@
         <h1>GTP Signature Builder and Copying Tool</h1>
         <hr>
       </header>
-
       <div class="container" style="max-width: 720px">
-    
         <form id="form" method="GET" action="#signature">
           <div class="form-group">
             <h2>Signature Generator</h2>
             <p>Enter your information below to generate your signature.</p>
-            <p>To add telephone numbers, click the <strong class="text-info">"Add Phone"</strong> button. You may use the sort up "<i class="fa fa-arrow-up text-success" aria-hidden="true"></i>" and sort down "<i class="fa fa-arrow-down text-danger" aria-hidden="true"></i>" buttons on the left side of each telephone number input to reorder telephone numbers. You may use the removal "<i class="fa fa-times text-danger" aria-hidden="true"></i>" button on the right side of each telephone input to remove it.</p>
+            <p>To add phone numbers and usernames, click the <strong class="text-info">"Add Phone / Username"</strong> button. You may use the sort up "<i class="fa fa-arrow-up text-success" aria-hidden="true"></i>" and sort down "<i class="fa fa-arrow-down text-danger" aria-hidden="true"></i>" buttons on the left side of each telePhone / Username input to reorder telePhone / Usernames. You may use the removal "<i class="fa fa-times text-danger" aria-hidden="true"></i>" button on the right side of each telephone input to remove it.</p>
           </div>
           <hr>
           <div class="form-row">
@@ -94,20 +79,17 @@
               <small id="nameHelp" class="form-text text-muted">Please input your name as you prefer it.</small>
             </div>
             <div class="col-6 mb-3">
-              <label for="title">Position/Title</label>
+              <label for="title">Position / Title</label>
               <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp"<?php if (isset($_GET['name'])) { echo ' value="'.$_GET['title'].'"'; } ?> placeholder="ex: Demo Person" required>
               <small id="nameHelp" class="form-text text-muted">Please enter your title or position</small>
             </div>
           </div>
 
           <div id="tels">
-
             <?php
-
               for ($i = 0; $i < 10; $i++) {
                 if (isset($_GET['tel_'.$i.'_value']) && isset($_GET['tel_'.$i.'_region'])) {
                   ?>
-
             <div id="tel_<?php echo $i; ?>" class="tel py-2" data-tel="<?php echo $i; ?>">
               <div class="form-row">
                 <div class="col-1" style="display: flex; flex-flow: column wrap; justify-content: center; align-items: center;">
@@ -121,12 +103,12 @@
                   </button>
                 </div>
                 <div class="col-6 tel-number">
-                  <label for="tel_<?php echo $i; ?>_value">Phone number <?php echo $i + 1; ?></label>
-                  <input type="tel" name="tel_<?php echo $i; ?>_value" class="form-control" id="tel_<?php echo $i; ?>_value" aria-describedby="tel_<?php echo $i; ?>_valueHelp"<?php echo ' value="'.$_GET['tel_'.$i.'_value'].'"';?> pattern="[0-9 ()+\s]{10,}" placeholder="Ex: +1 555 123 4567" required>
-                  <small class="text-muted form-text" id="tel_<?php echo $i; ?>_valueHelp">Please include your formatted telephone number with country code. <strong>ex: +1 123 456 7890</strong></small>
+                  <label for="tel_<?php echo $i; ?>_value">Phone / Username <?php echo $i + 1; ?></label>
+                  <input type="tel" name="tel_<?php echo $i; ?>_value" class="form-control" id="tel_<?php echo $i; ?>_value" aria-describedby="tel_<?php echo $i; ?>_valueHelp"<?php echo ' value="'.$_GET['tel_'.$i.'_value'].'"';?> placeholder="Ex: +1 555 123 4567" required>
+                  <small class="text-muted form-text" id="tel_<?php echo $i; ?>_valueHelp">Please include your formatted phone number / username with country code. <strong>ex: +1 123 456 7890</strong></small>
                 </div>
                 <div class="col-4 tel-region">
-                  <label for="tel_<?php echo $i; ?>_region">Country/Label</label>
+                  <label for="tel_<?php echo $i; ?>_region">Country / Label</label>
                     <input type="text" class="form-control" id="tel_<?php echo $i; ?>_region" name="tel_<?php echo $i; ?>_region" aria-describedby="tel_<?php echo $i; ?>_regionHelp"<?php echo ' value="'.$_GET['tel_'.$i.'_region'].'"'; ?> placholder="ex: Office" required>
                     <small class="text-muted form-text" id="tel_<?php echo $i; ?>_regionHelp"></small>
                 </div>
@@ -138,29 +120,22 @@
                 </div>
               </div>
            </div>
-
                   <?php
                 }
               }
-
             ?>
           </div>
           <div class="form-group text-right pt-2">
             <button id="addTel" class="btn btn-info">
-              <span>Add Phone </span>
+              <span>Add Phone / Username</span>
               <i class="fa fa-plus" aria-hidden="true"></i>
-              <i class="fa fa-phone" aria-hidden="true"></i>
             </button>
           </div>
           <hr>
           <button type="submit" class="btn btn-primary">Generate Signature</button>
         </form>
-
-      </div>
-
-      
+      </div>   
   <?php
-
   if (!empty($_GET)) {
   ?>
       <div class="container my-4" style="max-width: 720px;">
@@ -225,17 +200,21 @@
   <!--[if mso]><table width="320" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top: 10px; padding-bottom: 0px; font-family: Arial, sans-serif"><![endif]-->
   <div style="color:#000000;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
   <div style="line-height: 1.5; font-size: 12px; color: #000000; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-
   <?php
+    if (!empty($tels) && is_array($tels)) {
+      echo '<table bgcolor="transparent" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 16px auto 0 0; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: transparent; width: 320px;" valign="top" width="320"> <tbody>';
+      for ($i = 0; $i < count($tels); $i++) {
+        $tel = $tels[$i];
+        if ('#' === $tel['href']) {
+          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top; width: 40%" width="40%" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['label'].'</span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0; width: 60%" width="60%"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
+        } else {
+          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top; width: 40%" width="40%" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;"><a href="tel:'.$tel['href'].'" style="text-decoration: none !important; color: #000000 !important;" title="tel:'.$tel['href'].'">'.$tel['label'].'</a></span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0; width: 60%" width="60%"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
+        }
 
-    for ($i = 0; $i < count($tels); $i++) {
-      $tel = $tels[$i];
-      echo '<p style="font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;"><a href="tel:'.$tel['href'].'" style="text-decoration: none !important; color: #000000 !important;" title="tel:'.$tel['href'].'">'.$tel['label'].'</a>'.$tel['region'].'</span></p>';
+      }
+      echo '</tbody></table>';
     }
-
   ?>
-
-
   </div>
   </div>
   <!--[if mso]></td></tr></table><![endif]-->
@@ -269,7 +248,7 @@
   </tbody>
   </table>
   <!--[if (IE)]></div><![endif]-->
-  <p style="color: #000000; font-size: 10px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 12px; margin: 0; text-align: justify;"><span style="font-size: 10px; color: #000000;">This email and all documents accompanying this transmission contain information from Global Technology Partners LLC (“GTP”) and affiliates which is confidential and/or privileged. The information is intended for the exclusive use of the individual(s) or entity(ies) named on this email.   If you have received this email in error, please delete the email and notify us by telephone immediately at <a href="tel:" title="tel:" target="_blank" style="color:#000000 !important; text-decoration: none !important"><span style="color: #000000 !important; text-decoration: none !important">918.628.3316</span></a> so that we can direct it to the proper recipient.  Addressees should be aware of internet scams that involve email messages falsely claiming to be from GTP.  Never click on a link or upload an attachment unless you are confident this email was sent by an authorized GTP representative.  Any passcodes, card numbers or other confidential cardholder data must be masked in any text, screenshots or attachments sent in reply to this email.</span></p>
+  <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; color: #000000; font-size: 10px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 12px; margin: 0; text-align: justify;"><span style="font-size: 10px; color: #000000;">This email and all documents accompanying this transmission contain information from Global Technology Partners LLC (“GTP”) and affiliates which is confidential and/or privileged. The information is intended for the exclusive use of the individual(s) or entity(ies) named on this email.   If you have received this email in error, please delete the email and notify us by telephone immediately at <a href="tel:" title="tel:" target="_blank" style="color:#000000 !important; text-decoration: none !important"><span style="color: #000000 !important; text-decoration: none !important">918.628.3316</span></a> so that we can direct it to the proper recipient.  Addressees should be aware of internet scams that involve email messages falsely claiming to be from GTP.  Never click on a link or upload an attachment unless you are confident this email was sent by an authorized GTP representative.  Any passcodes, card numbers or other confidential cardholder data must be masked in any text, screenshots or attachments sent in reply to this email.</span></p>
   </div>
         <!--END SIGNATURE-->
         <div>
@@ -294,7 +273,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
     <script type="text/javascript">
-      
       var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
       if (!isChrome) {
         $("#wrapper *").remove();
@@ -322,7 +300,7 @@
           });
           thisTel.find('.tel-number label').attr({
             'for': 'tel_'+i+'_value'
-          }).text('Phone number ' + (i+ 1));
+          }).text('Phone / Username ' + (i+ 1));
           thisTel.find('.tel-number input').attr({
             'name': 'tel_'+i+'_value',
             'id': 'tel_'+i+'_value',
@@ -340,7 +318,6 @@
           thisTel.find('.tel-region small').attr('id', 'tel_'+i+'_regionHelp');
         }
       }
-
       $('#tels').on('click', 'button', function(e) {
         e.preventDefault();
         let control = $(this).attr('data-control');
@@ -356,19 +333,16 @@
         }
         telOrder();
       });
-
       $('#addTel').click(function(e) {
       	e.preventDefault();
         var telCount = $('#tels').find('.tel').length;
         if (telCount >= 9) {
         	$(this).prop('disabled', 'disabled');
         }
-        var data = '<div id="tel_'+telCount+'" class="tel py-2" data-tel="'+telCount+'"> <div class="form-row"> <div class="col-1" style="display: flex; flex-flow: column wrap; justify-content: center; align-items: center;"> <button class="btn btn-sm text-success" data-control="sort-up" title="Move up"> <span class="sr-only">Up</span> <i class="fa fa-arrow-up" aria-hidden="true"></i> </button> <button class="btn btn-sm text-danger" data-control="sort-down" title="Move down"> <span class="sr-only">Down</span> <i class="fa fa-arrow-down" aria-hidden="true"></i> </button> </div><div class="col-6 tel-number"> <label for="tel_'+telCount+'_value">Phone number '+(telCount+1)+'</label> <input type="tel" name="tel_'+telCount+'_value" class="form-control" id="tel_'+telCount+'_value" aria-describedby="tel_'+telCount+'_valueHelp" pattern="[0-9 ()+\s]{10,}" placeholder="ex: +1 555 123 4567" required> <small class="text-muted form-text" id="tel_'+telCount+'_valueHelp">Please include your formatted telephone number with country code. <strong>Ex: +1 123 456 7890</strong></small> </div><div class="col-4 tel-region"> <label for="tel_'+telCount+'_region">Country/Label</label> <input type="text" class="form-control" id="tel_'+telCount+'_region" name="tel_'+telCount+'_region" aria-describedby="tel_'+telCount+'_regionHelp" placeholder="ex: Office" required> <small class="text-muted form-text" id="tel_'+telCount+'_regionHelp"></small> </div><div class="col-1" style="display: flex; align-items: center;"> <button class="btn btn-sm text-danger" data-control="remove" title="Remove"> <span class="sr-only">Remove</span> <i class="fa fa-times" aria-hidden="true"></i> </button> </div></div></div>';
+        var data = '<div id="tel_'+telCount+'" class="tel py-2" data-tel="'+telCount+'"> <div class="form-row"> <div class="col-1" style="display: flex; flex-flow: column wrap; justify-content: center; align-items: center;"> <button class="btn btn-sm text-success" data-control="sort-up" title="Move up"> <span class="sr-only">Up</span> <i class="fa fa-arrow-up" aria-hidden="true"></i> </button> <button class="btn btn-sm text-danger" data-control="sort-down" title="Move down"> <span class="sr-only">Down</span> <i class="fa fa-arrow-down" aria-hidden="true"></i> </button> </div><div class="col-6 tel-number"> <label for="tel_'+telCount+'_value">Phone / Username '+(telCount+1)+'</label> <input type="tel" name="tel_'+telCount+'_value" class="form-control" id="tel_'+telCount+'_value" aria-describedby="tel_'+telCount+'_valueHelp" placeholder="ex: +1 555 123 4567" required> <small class="text-muted form-text" id="tel_'+telCount+'_valueHelp">Please include your formatted phone number / username with country code. <strong>Ex: +1 123 456 7890</strong></small> </div><div class="col-4 tel-region"> <label for="tel_'+telCount+'_region">Country / Label</label> <input type="text" class="form-control" id="tel_'+telCount+'_region" name="tel_'+telCount+'_region" aria-describedby="tel_'+telCount+'_regionHelp" placeholder="ex: Office" required> <small class="text-muted form-text" id="tel_'+telCount+'_regionHelp"></small> </div><div class="col-1" style="display: flex; align-items: center;"> <button class="btn btn-sm text-danger" data-control="remove" title="Remove"> <span class="sr-only">Remove</span> <i class="fa fa-times" aria-hidden="true"></i> </button> </div></div></div>';
         $('#tels').append(data);
       });
-
     </script>
-
     <footer id="footer" class="container text-center pt-4 pb-3">
       <p class="small text-muted">Created by <a href="http://kwilliams.me" target="_blank">K. Williams</a> for exclusive use by <a href="http://gtpprepaid.com/" rel="noopener nofollow">GTP</a>. Do not duplicate.</p>
     </footer>
