@@ -95,7 +95,7 @@
             </div>
             <div class="col-6 mb-3">
               <label for="title">Position/Title</label>
-              <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp"<?php if (isset($_GET['name'])) { echo ' value="'.$_GET['title'].'"'; } ?> placeholder="Ex: Demo Person" required>
+              <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp"<?php if (isset($_GET['name'])) { echo ' value="'.$_GET['title'].'"'; } ?> placeholder="ex: Demo Person" required>
               <small id="nameHelp" class="form-text text-muted">Please enter your title or position</small>
             </div>
           </div>
@@ -123,7 +123,7 @@
                 <div class="col-6 tel-number">
                   <label for="tel_<?php echo $i; ?>_value">Phone number <?php echo $i + 1; ?></label>
                   <input type="tel" name="tel_<?php echo $i; ?>_value" class="form-control" id="tel_<?php echo $i; ?>_value" aria-describedby="tel_<?php echo $i; ?>_valueHelp"<?php echo ' value="'.$_GET['tel_'.$i.'_value'].'"';?> pattern="[0-9 ()+]{10,20}" placeholder="Ex: +1 555 123 4567" required>
-                  <small class="text-muted form-text" id="tel_<?php echo $i; ?>_valueHelp">Please include your formatted telephone number with country code. <strong>Ex: +1 123 456 7890</strong></small>
+                  <small class="text-muted form-text" id="tel_<?php echo $i; ?>_valueHelp">Please include your formatted telephone number with country code. <strong>ex: +1 123 456 7890</strong></small>
                 </div>
                 <div class="col-4 tel-region">
                   <label for="tel_<?php echo $i; ?>_region">Country/Label</label>
@@ -356,7 +356,7 @@
         if (telCount >= 9) {
         	$(this).prop('disabled', 'disabled');
         }
-        var data = '<div id="tel_'+telCount+'" class="tel py-2" data-tel="'+telCount+'"> <div class="form-row"> <div class="col-1" style="display: flex; flex-flow: column wrap; justify-content: center; align-items: center;"> <button class="btn btn-sm text-success" data-control="sort-up" title="Move up"> <span class="sr-only">Up</span> <i class="fa fa-arrow-up" aria-hidden="true"></i> </button> <button class="btn btn-sm text-danger" data-control="sort-down" title="Move down"> <span class="sr-only">Down</span> <i class="fa fa-arrow-down" aria-hidden="true"></i> </button> </div><div class="col-6 tel-number"> <label for="tel_'+telCount+'_value">Phone number '+(telCount+1)+'</label> <input type="tel" name="tel_'+telCount+'_value" class="form-control" id="tel_'+telCount+'_value" aria-describedby="tel_'+telCount+'_valueHelp" pattern="[0-9 ()+]{10}" placeholder="Ex: +1 555 123 4567" required> <small class="text-muted form-text" id="tel_'+telCount+'_valueHelp">Please include your formatted telephone number with country code. <strong>Ex: +1 123 456 7890</strong></small> </div><div class="col-4 tel-region"> <label for="tel_'+telCount+'_region">Country/Label</label> <input type="text" class="form-control" id="tel_'+telCount+'_region" name="tel_'+telCount+'_region" aria-describedby="tel_'+telCount+'_regionHelp" placeholder="Ex: Office" required> <small class="text-muted form-text" id="tel_'+telCount+'_regionHelp"></small> </div><div class="col-1" style="display: flex; align-items: center;"> <button class="btn btn-sm text-danger" data-control="remove" title="Remove"> <span class="sr-only">Remove</span> <i class="fa fa-times" aria-hidden="true"></i> </button> </div></div></div>';
+        var data = '<div id="tel_'+telCount+'" class="tel py-2" data-tel="'+telCount+'"> <div class="form-row"> <div class="col-1" style="display: flex; flex-flow: column wrap; justify-content: center; align-items: center;"> <button class="btn btn-sm text-success" data-control="sort-up" title="Move up"> <span class="sr-only">Up</span> <i class="fa fa-arrow-up" aria-hidden="true"></i> </button> <button class="btn btn-sm text-danger" data-control="sort-down" title="Move down"> <span class="sr-only">Down</span> <i class="fa fa-arrow-down" aria-hidden="true"></i> </button> </div><div class="col-6 tel-number"> <label for="tel_'+telCount+'_value">Phone number '+(telCount+1)+'</label> <input type="tel" name="tel_'+telCount+'_value" class="form-control" id="tel_'+telCount+'_value" aria-describedby="tel_'+telCount+'_valueHelp" pattern="[0-9 ()+]{10}" placeholder="ex: +1 555 123 4567" required> <small class="text-muted form-text" id="tel_'+telCount+'_valueHelp">Please include your formatted telephone number with country code. <strong>Ex: +1 123 456 7890</strong></small> </div><div class="col-4 tel-region"> <label for="tel_'+telCount+'_region">Country/Label</label> <input type="text" class="form-control" id="tel_'+telCount+'_region" name="tel_'+telCount+'_region" aria-describedby="tel_'+telCount+'_regionHelp" placeholder="ex: Office" required> <small class="text-muted form-text" id="tel_'+telCount+'_regionHelp"></small> </div><div class="col-1" style="display: flex; align-items: center;"> <button class="btn btn-sm text-danger" data-control="remove" title="Remove"> <span class="sr-only">Remove</span> <i class="fa fa-times" aria-hidden="true"></i> </button> </div></div></div>';
         $('#tels').append(data);
       });
 
