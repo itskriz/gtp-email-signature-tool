@@ -8,7 +8,7 @@ Extract the contents of the zip folder or clone to a location of your choice you
 This tool requires the use of Google Chrome and JavaScript. This tool is not intended for use on mobile devices.
 
 ## Creating a signature
-Enter your information into the signature generator form's fields. You may enter up to 10 telephone numbers. Please note, telephone numbers **must** be formatted as you would like them to appear in your signatures. *Non-telephone* contact items must be added manually via HTML code. You may need a web-developer's assistance with it.
+Enter your information into the signature generator form's fields. You may enter up to 10 telephone numbers or usernames. **Usernames will not be hyperlinked**.
 
 You may use the sorting arrow buttons on the left side of each telephone number input to reorder telephone numbers. You may use the removal X button on the right side of each telephone input to remove it.
 
