@@ -172,6 +172,19 @@
           <a href="https://support.office.com/en-us/article/change-an-email-signature-86597769-e4df-4320-b219-39d6e1a9e87b" target="_blank"><i class="fa fw fa-windows" aria-hidden="true"></i> Outlook</a> &nbsp;
           <a href="https://support.apple.com/guide/mail/create-and-use-email-signatures-mail11943/mac" target="_blank" rel="nofollow noopener"><i class="fa fw fa-apple" aria-hidden="true"></i> Apple Mail</a>
         </p>
+        <p>
+          <strong>Generator Link</strong><br>
+          If you are generating this signature for someone else, you may use the below link to send a premade signature to someone. Simply click the button below to copy it to your clipboard and send that to the person of your choice.
+        </p>
+        <!-- Target -->
+        <div class="form-inline">
+          <input id="signatureLink" style="width: calc(100% - 42px);" class="bg-light form-control small px-3 py-2" value="<?php echo $get_url . '#signature'; ?>">
+          <!-- Trigger -->
+          <button class="btn btn-info copy-btn" data-clipboard-target="#signatureLink">
+              <i class="fa fa-clipboard" aria-hidden="true" title="Copy to clipboard"></i>
+          </button>
+          <p class="text-success text-right pt-1 mb-0 pb-0" style="opacity: 0;">URL copied!</p>
+        </div>
         <hr>
         <!--BEGIN SIGNATURE-->
   <div id="signature" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: transparent;">
@@ -259,9 +272,11 @@
   <p style="color: #000000; font-size: 10px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 12px; margin: 0; text-align: justify;"><span style="font-size: 10px; color: #000000;">This email and all documents accompanying this transmission contain information from Global Technology Partners LLC (“GTP”) and affiliates which is confidential and/or privileged. The information is intended for the exclusive use of the individual(s) or entity(ies) named on this email.   If you have received this email in error, please delete the email and notify us by telephone immediately at <a href="tel:" title="tel:" target="_blank" style="color:#000000 !important; text-decoration: none !important"><span style="color: #000000 !important; text-decoration: none !important">918.628.3316</span></a> so that we can direct it to the proper recipient.  Addressees should be aware of internet scams that involve email messages falsely claiming to be from GTP.  Never click on a link or upload an attachment unless you are confident this email was sent by an authorized GTP representative.  Any passcodes, card numbers or other confidential cardholder data must be masked in any text, screenshots or attachments sent in reply to this email.</span></p>
   </div>
         <!--END SIGNATURE-->
-        <hr>
-        <button class="btn btn-primary" id="getSignature" data-clipboard-target="#signature">Copy Signature to Clipboard</button>
-        <p id="signatureNotice" class="text-success mt-3" style="opacity: 0;">Signature Copied!</p>
+        <div>
+          <hr>
+          <button class="btn btn-primary copy-btn" id="getSignature" data-clipboard-target="#signature">Copy Signature to Clipboard</button>
+          <p class="text-success mt-3" style="opacity: 0;">Signature copied!</p>
+        </div>
   <?php
   } // end if get
   ?>
@@ -274,7 +289,7 @@
       <style>#wrapper{display:none;}</style>
     </noscript>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
@@ -286,23 +301,15 @@
         $('<p id="nochrome" class="pt-4 mt-4">Please use this tool using Google Chrome.</p>').appendTo('#wrapper');
       }
       $(function() {
-        new Clipboard('#getSignature');
+        new Clipboard('.copy-btn');
       });
-      $('#getSignature').click(function() {
-        $('p#signatureNotice').css({opacity: 1});
+      $('.copy-btn').click(function() {
+        var notice = $(this).parent().find('p');
+        notice.css({opacity: 1});
         setTimeout(function() {
-          $('p#signatureNotice').animate({opacity: 0}, 1000);
+          $(notice).animate({opacity: 0}, 1000);
         }, 3000);
       });
-      
-      /*
-      $('#sig_select select').change(function() {
-        $(this).parents('form').submit();
-      });
-      var signature = document.getElementById('signature');
-      var signature_images = signature.getElementsByTagName('img');
-      var logoURL = new URL(signature_images[0].src);
-      */
 
       function telOrder() {
         var tels = $('#tels').find('.tel');
