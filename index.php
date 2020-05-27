@@ -143,9 +143,9 @@
         <p>Use the <strong class="text-primary">"Copy Signature to Clipboard"</strong> button below to copy the signature to your clipboard and paste into the signature area of your preferred email client. You may also edit the fields above and click the <strong class="text-primary">"Generate Signature"</strong> button again.</p>
         <p>
           <strong>Signature installation tutorials:</strong><br>
-          <a href="https://support.google.com/mail/answer/8395?co=GENIE.Platform%3DDesktop&amp;hl=en" target="_blank" rel="nofollow noopener"><i class="fa fw fa-google" aria-hidden="true"></i> GMail</a> &nbsp;
-          <a href="https://support.office.com/en-us/article/change-an-email-signature-86597769-e4df-4320-b219-39d6e1a9e87b" target="_blank"><i class="fa fw fa-windows" aria-hidden="true"></i> Outlook</a> &nbsp;
-          <a href="https://support.apple.com/guide/mail/create-and-use-email-signatures-mail11943/mac" target="_blank" rel="nofollow noopener"><i class="fa fw fa-apple" aria-hidden="true"></i> Apple Mail</a>
+          <a href="https://support.google.com/mail/answer/8395?co=GENIE.Platform%3DDesktop&amp;hl=en" target="_blank" rel="nofollow noopener"><i class="fa fa-fw fa-google" aria-hidden="true"></i> GMail</a> &nbsp;
+          <a href="https://support.office.com/en-us/article/change-an-email-signature-86597769-e4df-4320-b219-39d6e1a9e87b" target="_blank"><i class="fa fa-fw fa-windows" aria-hidden="true"></i> Outlook</a> &nbsp;
+          <a href="https://support.apple.com/guide/mail/create-and-use-email-signatures-mail11943/mac" target="_blank" rel="nofollow noopener"><i class="fa fa-fw fa-apple" aria-hidden="true"></i> Apple Mail</a>
         </p>
         <p>
           <strong>Generator Link</strong><br>
