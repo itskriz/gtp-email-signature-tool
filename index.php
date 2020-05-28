@@ -56,6 +56,16 @@
             array_push($tels, $thisTel);
           }
         }
+        $disclaimerTel = array(
+          'label' => '+1 918 628 3316',
+          'href'  => 'tel:+19186283316',
+        );
+        if (is_array($tels) && !empty($tels)) {
+          $disclaimerTel = array(
+            'label' => $tels[0]['label'],
+            'href'  => $tels[0]['href'],
+          );
+        }
       }
     ?>
     <div id="wrapper">
@@ -206,9 +216,9 @@
       for ($i = 0; $i < count($tels); $i++) {
         $tel = $tels[$i];
         if ('#' === $tel['href']) {
-          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top; width: 40%" width="40%" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['label'].'</span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0; width: 60%" width="60%"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
+          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top;" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['label'].'</span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
         } else {
-          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top; width: 40%" width="40%" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;"><a href="tel:'.$tel['href'].'" style="text-decoration: none !important; color: #000000 !important;" title="tel:'.$tel['href'].'">'.$tel['label'].'</a></span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0; width: 60%" width="60%"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
+          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top;" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;"><a href="tel:'.$tel['href'].'" style="text-decoration: none !important; color: #000000 !important;" title="tel:'.$tel['href'].'">'.$tel['label'].'</a></span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
         }
 
       }
@@ -248,7 +258,7 @@
   </tbody>
   </table>
   <!--[if (IE)]></div><![endif]-->
-  <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; color: #000000; font-size: 10px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 12px; margin: 0; text-align: justify;"><span style="font-size: 10px; color: #000000;">This email and all documents accompanying this transmission contain information from Global Technology Partners LLC (“GTP”) and affiliates which is confidential and/or privileged. The information is intended for the exclusive use of the individual(s) or entity(ies) named on this email.   If you have received this email in error, please delete the email and notify us by telephone immediately at <a href="tel:" title="tel:" target="_blank" style="color:#000000 !important; text-decoration: none !important"><span style="color: #000000 !important; text-decoration: none !important">918.628.3316</span></a> so that we can direct it to the proper recipient.  Addressees should be aware of internet scams that involve email messages falsely claiming to be from GTP.  Never click on a link or upload an attachment unless you are confident this email was sent by an authorized GTP representative.  Any passcodes, card numbers or other confidential cardholder data must be masked in any text, screenshots or attachments sent in reply to this email.</span></p>
+  <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; color: #000000; font-size: 10px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 12px; margin: 0; text-align: justify;"><span style="font-size: 10px; color: #000000;">This email and all documents accompanying this transmission contain information from Global Technology Partners LLC (“GTP”) and affiliates which is confidential and/or privileged. The information is intended for the exclusive use of the individual(s) or entity(ies) named on this email.   If you have received this email in error, please delete the email and notify us by telephone immediately at <a href="tel:<?php echo $disclaimerTel['href']; ?>" title="tel:<?php echo $disclaimerTel['href']; ?>" target="_blank" style="color:#000000 !important; text-decoration: none !important"><span style="color: #000000 !important; text-decoration: none !important"><?php echo $disclaimerTel['label']; ?></span></a> so that we can direct it to the proper recipient.  Addressees should be aware of internet scams that involve email messages falsely claiming to be from GTP.  Never click on a link or upload an attachment unless you are confident this email was sent by an authorized GTP representative.  Any passcodes, card numbers or other confidential cardholder data must be masked in any text, screenshots or attachments sent in reply to this email.</span></p>
   </div>
         <!--END SIGNATURE-->
         <div>

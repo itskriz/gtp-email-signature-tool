@@ -2,7 +2,7 @@
 A signature generator and copy too for GTP.
 
 ## Installation
-Extract the contents of the zip folder or clone to a location of your choice your web server.
+Extract the contents of the zip folder or clone this repository to a location of your choice on your web server.
 
 ## Limitations
 This tool requires the use of Google Chrome and JavaScript. This tool is not intended for use on mobile devices.
