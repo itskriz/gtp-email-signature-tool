@@ -36,6 +36,7 @@
         $title = ucwords(filter_var($_GET['title'], FILTER_SANITIZE_STRING));
         $tels = array();
         $maxTel = 0;
+        $widthFix = array('', '');
         for ($i = 0; $i < 10; $i++) {
           if (isset($_GET['tel_'.$i.'_value']) && $_GET['tel_'.$i.'_region']) {
             $thisTelValue = filter_var($_GET['tel_'.$i.'_value'], FILTER_SANITIZE_STRING);
@@ -56,6 +57,12 @@
             array_push($tels, $thisTel);
           }
         }
+        if (17 > $maxTel) {
+          $widthFix = array(
+            ' width: 40%; max-width: 40%;',
+            ' width="40%"'
+          );
+        }
         $disclaimerTel = array(
           'label' => '+1 918 628 3316',
           'href'  => 'tel:+19186283316',
@@ -69,7 +76,6 @@
       }
     ?>
     <div id="wrapper">
-
       <header id="header" class="container py-4" style="max-width: 720px;">
         <h1>GTP Signature Builder and Copying Tool</h1>
         <hr>
@@ -216,9 +222,9 @@
       for ($i = 0; $i < count($tels); $i++) {
         $tel = $tels[$i];
         if ('#' === $tel['href']) {
-          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top;" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['label'].'</span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
+          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top;'.$widthFix[0].'" valign="top"'.$widthFix[1].'> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['label'].'</span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
         } else {
-          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top;" valign="top"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;"><a href="tel:'.$tel['href'].'" style="text-decoration: none !important; color: #000000 !important;" title="tel:'.$tel['href'].'">'.$tel['label'].'</a></span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
+          echo '<tr style="vertical-align: top;" valign="top"> <td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; word-break: break-word; vertical-align: top;'.$widthFix[0].'" valign="top"'.$widthFix[1].'> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;"><a href="tel:'.$tel['href'].'" style="text-decoration: none !important; color: #000000 !important;" title="tel:'.$tel['href'].'">'.$tel['label'].'</a></span></p></td><td align="left" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"> <p style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif; text-align: left; font-size: 14px; line-height: 1.3; word-break: break-word; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 14px;">'.$tel['region'].'</span></p></td></tr>';
         }
 
       }
