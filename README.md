@@ -21,6 +21,16 @@ Each email platform his different, the method for installing signatures for each
 - [Outlook](https://support.office.com/en-us/article/change-an-email-signature-86597769-e4df-4320-b219-39d6e1a9e87b)
 - [Apple Mail](https://support.apple.com/guide/mail/create-and-use-email-signatures-mail11943/mac)
 
+## Outlook 2016
+Installing these signatures for Outlook 2016 is a bit more complicated.
+1. Go to Outlook Options > Mail and click "Signatures"
+2. Create a new signature. Name it somethin simple like "My GTP Signature" and save your changes (it will be empty)
+3. Again, at the Outlook Options > Mail page, click "Signatures" again, this time pressing and holding the Control key as you do so. This should open a new window
+4. In this new window, find and delete the **.htm** file named after the signature you just created (ie: My GTP Signature.htm)
+5. Copy the **.htm** file you download to the new window. Once complete, rename the file exactly as you named your signature (ie: My STP Signature.htm)
+6. Back in Outlook, you signature may look strange in the signature settings. That's okay. Just draft a new email and test your signature to ensure it looks correct.
+You may also follow along with [this YouTube video](https://www.youtube.com/watch?v=uu0hBvBSoJ8) to help you with the above steps
+
 ## License
 This tool is created and maintained by [Kris Williams](https://kwilliams.me) for exclusive use by [GTP](http://gtpprepaid.com/).
 

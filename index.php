@@ -110,7 +110,6 @@
             <h2>Signature Generator</h2>
             <p>Enter your information below to generate your signature.</p>
             <p>To add phone numbers and usernames, click the <strong class="text-info">"Add Phone / Username"</strong> button. You may use the sort up "<i class="fa fa-arrow-up text-success" aria-hidden="true"></i>" and sort down "<i class="fa fa-arrow-down text-danger" aria-hidden="true"></i>" buttons on the left side of each telePhone / Username input to reorder telePhone / Usernames. You may use the removal "<i class="fa fa-times text-danger" aria-hidden="true"></i>" button on the right side of each telephone input to remove it.</p>
-            <p><strong class="text-info">Note for Outlook 2016 Users: </strong><br/>You may experience formatting issues when attempting to paste your signature into Outlook. If that is the case, you may need to use the following template built in Microsoft Word. Be sure to fill out <strong>your name</strong>, <strong>your title</strong>, <strong>your contact numbers</strong>, and to update the telephone number in the disclaimer part of the signature before selecting all in the document, copying, and pasting into Outlook 2016.<br><br><a href="GTP_Email-Signature_Office2016_Template.docx" download>GTP Email Signature MS Word Template (.dox)</a></p>
           </div>
           <hr>
           <div class="form-row">
