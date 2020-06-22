@@ -30,13 +30,27 @@
     <?php
       $get_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $get_cwd = explode('?', $get_url);
-      $logoURL = $get_cwd[0] . 'gtp_email-logo.gif';
+      $logoURL = $get_cwd[0] . 'gtp_email-logo';
+      $logoEXT = '.gif';
       if (isset($_GET) && !empty($_GET)) {
         $name = ucwords(filter_var($_GET['name'], FILTER_SANITIZE_STRING));
         $title = ucwords(filter_var($_GET['title'], FILTER_SANITIZE_STRING));
         $tels = array();
         $maxTel = 0;
-        $widthFix = array('', '');
+
+        if ('animated' == $_GET['logotype']) {
+          $logoEXT = '.gif';
+        } else if ('static' == $_GET['logotype']) {
+          $logoEXT = '.png';
+        }
+        $logoURL .= $logoEXT;
+
+        $widthFix = array(
+          ' width: 45%; max-width: 45%;',
+          ' width="45%"'
+        );
+
+        //$widthFix = array('', '');
         for ($i = 0; $i < 10; $i++) {
           if (isset($_GET['tel_'.$i.'_value']) && $_GET['tel_'.$i.'_region']) {
             $thisTelValue = filter_var($_GET['tel_'.$i.'_value'], FILTER_SANITIZE_STRING);
@@ -164,11 +178,26 @@
               }
             ?>
           </div>
-          <div class="form-group text-right pt-2">
-            <button id="addTel" class="btn btn-info">
-              <span>Add Phone / Username</span>
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
+          <div class="form-row pt-2">
+            <div class="col">
+              <p class="form-text">
+                Logo Style
+              </p>
+              <div class="form-check form-check-inline">
+                <input type="radio" name="logotype" class="form-check-input" value="animated"<?php if ('animated' == $_GET['logotype'] || !isset($_GET['logotype'])) { echo ' checked'; } ?> required>
+                <label class="form-check-label" for="logotype">Animated Logo</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" name="logotype" class="form-check-input" value="static"<?php if ('static' == $_GET['logotype'] || !isset($_GET['logotype'])) { echo ' checked'; } ?> required>
+                <label class="form-check-label" for="logotype">Static Logo</label>
+              </div>
+            </div>
+            <div class="col text-right">
+              <button id="addTel" class="btn btn-info">
+                <span>Add Phone / Username</span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
           <hr>
           <button type="submit" class="btn btn-primary">Generate Signature</button>
