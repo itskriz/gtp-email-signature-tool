@@ -188,7 +188,7 @@
                 <label class="form-check-label" for="logotype">Animated Logo</label>
               </div>
               <div class="form-check form-check-inline">
-                <input type="radio" name="logotype" class="form-check-input" value="static"<?php if ('static' == $_GET['logotype'] || !isset($_GET['logotype'])) { echo ' checked'; } ?> required>
+                <input type="radio" name="logotype" class="form-check-input" value="static"<?php if ('static' == $_GET['logotype']) { echo ' checked'; } ?> required>
                 <label class="form-check-label" for="logotype">Static Logo</label>
               </div>
             </div>
